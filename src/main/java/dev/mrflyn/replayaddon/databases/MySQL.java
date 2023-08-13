@@ -55,6 +55,8 @@ public class MySQL implements IDatabase {
     public boolean connect() {
         HikariConfig hikariConfig = new HikariConfig();
 
+        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
         hikariConfig.setPoolName("ReplayAddonBW1058MySQLPool");
 
         hikariConfig.setMaximumPoolSize(poolSize);
@@ -70,9 +72,11 @@ public class MySQL implements IDatabase {
             hikariConfig.addDataSourceProperty("verifyServerCertificate", String.valueOf(false));
         }
 
+
         hikariConfig.addDataSourceProperty("characterEncoding", "utf8");
         hikariConfig.addDataSourceProperty("encoding", "UTF-8");
         hikariConfig.addDataSourceProperty("useUnicode", "true");
+        hikariConfig.addDataSourceProperty("allowPublicKeyRetrieval", "true");
 
         hikariConfig.addDataSourceProperty("rewriteBatchedStatements", "true");
         hikariConfig.addDataSourceProperty("jdbcCompliantTruncation", "false");
