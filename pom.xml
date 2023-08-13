@@ -30,6 +30,11 @@
             <id>AlessioDP</id>
             <url>https://repo.alessiodp.com/releases/</url>
         </repository>
+
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -73,58 +78,68 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>PlaceholderAPI-2.10.9</groupId>
             <artifactId>PlaceholderAPI-2.10.9</artifactId>
             <scope>system</scope>
             <version>1.0</version>
-            <systemPath>H:\projectApisSpigot\PlaceholderAPI-2.10.9.jar</systemPath>
+            <systemPath>${project.basedir}/lib/PlaceholderAPI-2.10.9.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>ProtocolLib</groupId>
             <artifactId>ProtocolLib</artifactId>
             <scope>system</scope>
             <version>1.0</version>
-            <systemPath>H:\ProjectAPIsSpigot\ProtocolLib.jar</systemPath>
+            <systemPath>${project.basedir}/lib/ProtocolLib.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>PacketWrapper</groupId>
             <artifactId>PacketWrapper</artifactId>
             <scope>system</scope>
             <version>1.0</version>
-            <systemPath>H:\ProjectAPIsSpigot\PacketWrapper.jar</systemPath>
+            <systemPath>${project.basedir}/lib/PacketWrapper.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>bedwars-plugin-22.7</groupId>
             <artifactId>bedwars-plugin-22.7</artifactId>
             <scope>system</scope>
             <version>1.0</version>
-            <systemPath>H:\ProjectAPIsSpigot\bedwars-plugin-22.7.jar</systemPath>
+            <systemPath>${project.basedir}/lib/bedwars-plugin-22.7.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>Replay</groupId>
             <artifactId>Replay</artifactId>
             <scope>system</scope>
             <version>1.0</version>
-            <systemPath>H:\AdvancedReplay\target\Replay.jar</systemPath>
+            <systemPath>${project.basedir}/lib/Replay.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>org.yaml.simpleyaml</groupId>
-            <artifactId>simple-yaml</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Carleslc.Simple-YAML</groupId>
+            <artifactId>Simple-Yaml</artifactId>
             <version>1.7.3</version>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>ReplayAddon-BW1058-Dev</finalName>
-        <directory>H:\ReplayAddon-BW1058\builds</directory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.1-SNAPSHOT</version>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -152,6 +167,10 @@
                                 <relocation>
                                     <pattern>net.wesjd.anvilgui</pattern>
                                     <shadedPattern>dev.mrflyn.replayaddon.libs.net.wesjd.anvilgui</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.mysql</pattern>
+                                    <shadedPattern>dev.mrflyn.replayaddon.libs.mysql</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
